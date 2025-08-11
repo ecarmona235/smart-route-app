@@ -2,7 +2,9 @@ import { RouterClient } from 'ai-router-package';
 
 export async function POST() {
   try {
-    const client = new RouterClient();
+    const client = new RouterClient({
+        AI_ANALYSIS_API: process.env.AI_ANALYSIS_API,
+    });
     await client.initialize();
     
     return Response.json({ 
