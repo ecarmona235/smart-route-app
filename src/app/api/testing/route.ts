@@ -4,6 +4,39 @@ export async function POST() {
   try {
     const client = new RouterClient({
         AI_ANALYSIS_API: process.env.AI_ANALYSIS_API,
+        providers: [
+            {
+                provider_name: 'openai',
+                api_key: process.env.OPENAI_API_KEY || '',
+            },
+            {
+                provider_name: 'gemini',
+                api_key: process.env.GEMINI_API_KEY || '',
+            },
+            {
+                provider_name: 'x',
+                api_key: process.env.X_API_KEY || '',
+            },
+            {
+                provider_name: 'anthropic',
+                api_key: process.env.ANTHROPIC_API_KEY || '',
+            },
+            {
+                provider_name: 'serper',
+                api_key: process.env.SERPER_API_KEY || '',
+            },
+        ],
+        maxAge: 168 * 2,
+        hierarchy: {
+            first: 'last_used',
+            second: 'accuracy',
+            third: 'price',
+            last: 'latency',
+        },
+        stale_clean_up: true,
+        reasoning: true,
+        
+
     });
     await client.initialize();
     
