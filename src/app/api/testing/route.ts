@@ -22,8 +22,8 @@ export async function POST() {
                 api_key: process.env.ANTHROPIC_API_KEY || '',
             },
             {
-                provider_name: 'serper',
-                api_key: process.env.SERPER_API_KEY || '',
+                provider_name: 'cohere',
+                api_key: process.env.COHERE_API_KEY || '',
             },
         ],
         maxAge: 168 * 2,
